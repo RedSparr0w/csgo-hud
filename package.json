@@ -37,7 +37,7 @@
   "main": "index.html",
   "chromium-args": "--disable-gpu --force-cpu-draw",
   "window": {
-    "title": "CSGO Bomb Countdown",
+    "title": "CSGO HUD",
     "icon": "logo.png",
     "toolbar": false,
     "frame": false,

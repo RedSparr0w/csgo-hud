@@ -55,7 +55,7 @@ var round = {
 };
 
 function update(json) {
-	if (json.player.activity!="playing"){
+	if (json.player.activity!="playing" || json.round.phase=="warmup"){
 		$("#player-container").css("bottom","-100px");
 		$("#ammo-container").css("bottom","-100px");
 	} else {
@@ -73,6 +73,8 @@ function update(json) {
 			maxTime = 115;
 		} else if (round.phase === 'freezetime') {
 			maxTime = 15;
+		} else if (round.phase === 'warmup') {
+			maxTime = 300;
 		} else {
 			maxTime = 7;
 		}
@@ -93,7 +95,6 @@ function update(json) {
 		json.extra = {};
 		json.extra.round = round;
 	}
-
 	updatePage(JSON.stringify(json));
 }
 
@@ -183,7 +184,9 @@ function tick() {
 		sec < 10 ? pre_sec = "0" : pre_sec = "";
 		$(".time").css("font-size", "7em");
 
-		if (json.round.phase === 'freezetime') {
+		if (json.round.phase === 'warmup') {
+			$(".timelabel").html("Warmup");
+		} else if (json.round.phase === 'freezetime') {
 			$(".timelabel").html("Freeze Time");
 		} else if (json.round.phase === 'live') {
 			$(".timelabel").html("Round Time");
@@ -192,7 +195,8 @@ function tick() {
 		}
 
 		$(".time").html(min > 0 ? min + ":" + pre_sec + sec : sec);
-		$("#timer").css('color', 'lightblue');*/
+		$("#timer").css('color', 'lightblue');
+		*/
 	}
 }
 
@@ -201,7 +205,4 @@ function flash() {
 		this.switch = !this.switch;
 		return this.switch ? "#e74c3c" : "#f39c12";
 	});
-	/*if (json.extra.round.bomb.planted) {
-		setTimeout(flash, 200);
-	}*/
 }

@@ -1,1 +1,1 @@
-nw --disable-gpu --force-cpu-draw
+nw
