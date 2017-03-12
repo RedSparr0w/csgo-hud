@@ -31,7 +31,7 @@
         "start" : "nw",
         "preinstall": "npm list nw -g || npm install nw -g",
         "prebuild": "npm link || node prebuild.js",
-        "build": "nwbuild ./ -o ../builds -p win64,win32 --winIco ./logo.ico",
+        "build": "nwbuild ./ -v v0.12.3 -o ../builds -p win64,win32 --winIco ./logo.ico",
         "postbuild": "postbuild.bat"
   },
   "main": "index.html",
