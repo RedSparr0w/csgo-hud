@@ -16,8 +16,11 @@
 * `CTRL+ALT+X` Minimize HUD
 * `CTRL+ALT+C` Close HUD
 
+## Testing
+* `npm test` or `npm start`
+
 ## Build
-* npm run build
+* `npm run build`
 
 ## Contact
 * admin@redsparr0w.com
