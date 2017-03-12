@@ -170,7 +170,7 @@ function tick() {
 	} else {
 		$(".timelabel").html("");
 		$(".time").html("");
-		/*
+		
 		win.setAlwaysOnTop(true);
 		var min = 0;
 		var sec = 0;
@@ -183,7 +183,6 @@ function tick() {
 		}
 		sec < 10 ? pre_sec = "0" : pre_sec = "";
 		$(".time").css("font-size", "7em");
-
 		if (json.round.phase === 'warmup') {
 			$(".timelabel").html("Warmup");
 		} else if (json.round.phase === 'freezetime') {
@@ -196,7 +195,6 @@ function tick() {
 
 		$(".time").html(min > 0 ? min + ":" + pre_sec + sec : sec);
 		$("#timer").css('color', 'lightblue');
-		*/
 	}
 }
 
