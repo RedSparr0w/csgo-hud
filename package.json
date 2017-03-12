@@ -30,8 +30,8 @@
   "scripts" : { 
     "start" : "nw",
 	"preinstall": "npm list nw -g || npm install nw -g",
-	"prebuild": "node prebuild.js",
-	"build": "nwbuild -v v0.12.3 -o \"../builds\" -p win64,win32 --winIco \"./logo.ico\" \"./\"",
+	"prebuild": "npm link || node prebuild.js",
+	"build": "nwbuild ./ -o ../builds -p win64,win32 --winIco ./logo.ico",
 	"postbuild": "postbuild.bat"
   },
   "main": "index.html",
@@ -43,7 +43,8 @@
     "frame": false,
     "width": 1920,
     "height": 1080,
-    "position": "center"
+    "position": "center",
+	"transparent": true
   },
   "webkit": {
     "plugin": true

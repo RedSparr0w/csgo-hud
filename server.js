@@ -5,7 +5,6 @@ var http = require('http');
 // Get the current window
 
 var win = gui.Window.get();
-win.setTransparent(true);
 win.width=screen.width;
 win.height=screen.height;
 win.setAlwaysOnTop(true);
@@ -170,7 +169,7 @@ function tick() {
 	} else {
 		$(".timelabel").html("");
 		$(".time").html("");
-		/*
+		
 		win.setAlwaysOnTop(true);
 		var min = 0;
 		var sec = 0;
@@ -196,7 +195,7 @@ function tick() {
 
 		$(".time").html(min > 0 ? min + ":" + pre_sec + sec : sec);
 		$("#timer").css('color', 'lightblue');
-		*/
+		
 	}
 }
 
