@@ -1,11 +1,11 @@
 {
   "name": "csgo-hud",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "CSGO Bomb Countdown",
   "author": {
     "name": "redsparr0w",
-	"steam": "http://steamcommunity.com/id/redsparr0w",
-	"github": "https://github.com/RedSparr0w"
+    "steam": "http://steamcommunity.com/id/redsparr0w",
+    "github": "https://github.com/RedSparr0w"
   },
   "maintainers": [
     {
@@ -28,11 +28,11 @@
   },
   "license": "MIT",
   "scripts" : { 
-    "start" : "nw",
-	"preinstall": "npm list nw -g || npm install nw -g",
-	"prebuild": "npm link || node prebuild.js",
-	"build": "nwbuild ./ -o ../builds -p win64,win32 --winIco ./logo.ico",
-	"postbuild": "postbuild.bat"
+    "test": "nwbuild -r ./",
+    "start": "nwbuild -r ./",
+    "preinstall": "npm list nw-builder -g || npm install nw-builder -g",
+    "build": "nwbuild ./ -o ../builds -p win64,win32 --winIco ./logo.ico",
+    "postbuild": "postbuild.bat"
   },
   "main": "index.html",
   "chromium-args": "--disable-gpu --force-cpu-draw",
@@ -44,7 +44,7 @@
     "width": 1920,
     "height": 1080,
     "position": "center",
-	"transparent": true
+    "transparent": true
   },
   "webkit": {
     "plugin": true
