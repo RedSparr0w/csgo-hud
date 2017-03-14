@@ -1,6 +1,6 @@
 var gui = require('nw.gui'); 
 var http = require('http');
-
+var dev = false;
 
 // Get the current window
 
@@ -23,7 +23,7 @@ server = http.createServer(function(req, res) {
 			body += data;
 		});
 		req.on('end', function() {
-			console.log("POST payload: " + body);
+			if(dev == true){console.debug("POST payload: " + body);}
 			update(JSON.parse(body));
 			res.end('');
 		});
