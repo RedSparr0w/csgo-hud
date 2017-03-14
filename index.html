@@ -1,98 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>CS:GO HUD</title>
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js">
-    </script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel=
-    "stylesheet">
-	<script src="./server.js"></script>
-	<style>
-	body {
-	  -webkit-user-select: none !important;  /* Chrome all / Safari all */
-	  -moz-user-select: none !important;     /* Firefox all */
-	  -ms-user-select: none !important;      /* IE 10+ */
-	  user-select: none !important;          /* Likely future */      
-	}
-	</style>
-</head>
-<body>
+<style>
+@font-face {
+  font-family: 'csfont';
+  src: url('csfont.ttf') format('truetype');
+}
+body {
+	text-align:center;
+	background-color:rgba(0,0,0,0);
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+#menu {
+	width:20%;
+	margin-left:40%;
+	padding-bottom:10px;
+	background-color:#171a21;
+	color:#ecf0f1;
+	border-radius:5px;
+}
+.hud {
+	position:relative;
+	margin:1.5vw;
+	width:29.9vw;
+	display:inline-block;
+	overflow:hidden;
+	cursor:pointer;
+}
+.hud h2 {
+	background-color:rgba(0,0,0,0.65);
+	position:absolute;
+	top: -50px;
+	left: 0px;
+	width: 100%;
+	color: #ecf0f1;
+	margin-top: 0px;
+	padding-top: 10px;
+	height: 30px;
+	transition: top 0.2s ease-out;
+}
+.hud:hover h2 {
+	top:0px;
+}
+.hud img {
+	width:100%;
+}
+.controls {
+	border-radius:3px;
+	padding:3px;
+	background-color:#7f8c8d;
+}
+</style>
 <script>
-var fs = require('fs')
-var gui = require('nw.gui'); 
-var win = gui.Window.get();
-
-win.on('closed', function() {
-	tray.remove();
-	process.exit(0);
-  });
-
-var dev_shortcut = new gui.Shortcut({
-  key : "Ctrl+Alt+Q",
-  active : function() {
-	win.showDevTools();
-  },
-  failed : function(msg) {
-	// :(, fail to register the |key| or couldn't parse the |key|.
-	console.log(msg);
-  }
-});
-var close_shortcut = new gui.Shortcut({
-  key : "Ctrl+Alt+C",
-  active : function() {
-	tray.remove();
-	win.close();
-	process.exit(0);
-  },
-  failed : function(msg) {
-	// :(, fail to register the |key| or couldn't parse the |key|.
-	console.log(msg);
-  }
-});
-var min_shortcut = new gui.Shortcut({
-  key : "Ctrl+Alt+X",
-  active : function() {
-	win.minimize();
-  },
-  failed : function(msg) {
-	// :(, fail to register the |key| or couldn't parse the |key|.
-	console.log(msg);
-  }
-});
-var menu_shortcut = new gui.Shortcut({
-  key : "Ctrl+Alt+Z",
-  active : function() {
-	$('body').load('./menu.html');
-	win.show();
-	win.focus();
-  },
-  failed : function(msg) {
-	console.log(msg);
-  }
-});
-gui.App.registerGlobalHotKey(dev_shortcut);
-gui.App.registerGlobalHotKey(close_shortcut);
-gui.App.registerGlobalHotKey(min_shortcut);
-gui.App.registerGlobalHotKey(menu_shortcut);
-
-var tray = new gui.Tray({ title: 'CS:GO HUD', tooltip: 'CS:GO HUD', icon: 'logo.png' });
-var menu = new gui.Menu();
-menu.append(new gui.MenuItem({
-  label: "Choose HUD",
-  click: function() {
-	$('body').load('./menu.html');
-  }
-}));
-menu.append(new gui.MenuItem({
-  label: "Close",
-  click: function() {
-	tray.remove();
-	win.close();
-	process.exit(0);
-  }
-}));
-tray.menu = menu;
-$('body').load('./menu.html');
-var huds = fs.readdirSync('./huds');
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+};
+for (i=0;i<huds.length;i++){
+	console.log(huds[i]);
+	$('body').append('<div class="hud" hud="'+huds[i]+'"><h2>'+huds[i].replaceAll("_"," ")+'</h2><img src="./huds/'+huds[i]+'/example.png" /></div>');
+}
+$('.hud').click(function(){
+	$('body').load('./huds/'+$(this).attr("hud")+'/index.html');
+	$('body').append('<style></style>');
+	$('style').load('./huds/'+$(this).attr("hud")+'/style.css');
+})
+/*
+$('body').append('<h1 id="credits">Credits</h1>');
+$('#credits').click(function(){
+	$('body').load('./credits.html');
+	win.blur();
+})
+*/
 </script>
+<div id="menu">
+	<img style="width: 100%" src="banner.png" alt="CS:GO HUD">
+	<p style="font-family:csfont;"> CHOOSE HUD</p>
+	<span class="controls">CTRL+ALT+Z</span>
+	<p style="font-family:csfont;"> MINIMIZE HUD</p>
+	<span class="controls">CTRL+ALT+X</span>
+	<p style="font-family:csfont;"> CLOSE HUD</p>
+	<span class="controls">CTRL+ALT+C</span>
+</div>
