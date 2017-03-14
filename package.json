@@ -1,6 +1,6 @@
 {
   "name": "csgo-hud",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "CSGO Bomb Countdown",
   "author": {
     "name": "redsparr0w",
@@ -30,7 +30,7 @@
   "scripts" : { 
     "test": "nwbuild -r ./",
     "start": "nwbuild -r ./",
-    "preinstall": "npm list nw-builder -g || npm install nw-builder -g",
+    "prebuild": "npm list nw-builder -g || npm install nw-builder -g",
     "build": "nwbuild ./ -o ../builds -p win64,win32 --winIco ./logo.ico",
     "postbuild": "postbuild.bat"
   },

@@ -1,4 +1,8 @@
 <style>
+@font-face {
+  font-family: 'csfont';
+  src: url('csfont.ttf') format('truetype');
+}
 body {
 	text-align:center;
 	background-color:rgba(0,0,0,0);
@@ -71,11 +75,12 @@ $('#credits').click(function(){
 */
 </script>
 <div id="menu">
-	<h1>CS:GO HUD</h1>
-	<p> Choose HUD</p>
+	<img style="width: 100%" src="banner.png" alt="CS:GO HUD">
+	<p style="font-family:csfont;"> CHOOSE HUD</p>
 	<span class="controls">CTRL+ALT+Z</span>
-	<p> Minimize HUD</p>
+	<p style="font-family:csfont;"> MINIMIZE HUD</p>
 	<span class="controls">CTRL+ALT+X</span>
-	<p> Close HUD</p>
+	<p style="font-family:csfont;"> CLOSE HUD</p>
 	<span class="controls">CTRL+ALT+C</span>
+	<p>To enable debug mode type "dev = true" in console.</p>
 </div>
