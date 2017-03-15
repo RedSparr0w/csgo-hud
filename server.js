@@ -1,5 +1,6 @@
-var gui = require('nw.gui'); 
-var http = require('http');
+var gui = require('nw.gui'),
+	http = require('http'),
+	debug = false;
 
 
 // Get the current window
@@ -23,7 +24,9 @@ server = http.createServer(function(req, res) {
 			body += data;
 		});
 		req.on('end', function() {
-			console.log("POST payload: " + body);
+			if (!!debug) {
+				console.debug("POST payload: " + body);
+			}
 			update(JSON.parse(body));
 			res.end('');
 		});
@@ -37,8 +40,8 @@ server = http.createServer(function(req, res) {
 
 });
 
-var map;
-var player;
+var map,
+	player;
 
 var round = {
 	phase: "",
@@ -112,25 +115,25 @@ function updatePage(data) {
 	/* ARMOR */
 	var armor = json.player.state.armor;
 	var armorColor;
-	!json.player.state.helmet ? $("#armor .fa-stack").html('<i class="fa fa-shield  fa-stack-2x"></i>') : $("#armor .fa-stack").html('<i class="fa fa-shield  fa-stack-2x"></i><i class="fa fa-plus fa-stack-1x"></i>') ;
+	!json.player.state.helmet ? $("#armor .fa-stack").html('<i class="fa fa-shield fa-stack-2x"></i>') : $("#armor .fa-stack").html('<i class="fa fa-shield fa-stack-2x"></i><i class="fa fa-plus fa-stack-1x"></i>') ;
 	if (armor == 0) {armorColor="rgba(0,0,0,0.65)";}else if (armor <= 15) {armorColor="#e74c3c";} else{armorColor="#3498db";}
 	$("#armor-text").html(armor);
 	$("#armor").css("color",armorColor);
 	$("#armor .level").css("left","-"+(100-armor)+"%").css("background-color",armorColor);
 	/* AMMO */
 	for (var key in json.player.weapons) {
-        var weapon = json.player.weapons[key];
+				var weapon = json.player.weapons[key];
 		if (weapon.state=="active" || weapon.state=="reloading") {
 			if (weapon.type=="Grenade" || weapon.type=="C4" || weapon.type=="Knife" || health == 0) {
 				$(".clip").html("");
 				$(".reserve").html("");
 				return;
 			}
-            $(".clip").html(weapon.ammo_clip+"/");
-            $(".reserve").html(weapon.ammo_reserve);
+						$(".clip").html(weapon.ammo_clip+"/");
+						$(".reserve").html(weapon.ammo_reserve);
 			return;
-        }
-    }
+				}
+		}
 	if(!tickinterval) {
 		tickinterval = setInterval(tick, 300);
 	}
@@ -170,6 +173,7 @@ function tick() {
 		$(".timelabel").html("");
 		$(".time").html("");
 		
+		/*
 		win.setAlwaysOnTop(true);
 		var min = 0;
 		var sec = 0;
@@ -195,6 +199,7 @@ function tick() {
 
 		$(".time").html(min > 0 ? min + ":" + pre_sec + sec : sec);
 		$("#timer").css('color', 'lightblue');
+		*/
 		
 	}
 }
