@@ -10,7 +10,21 @@ win.width=screen.width;
 win.height=screen.height;
 win.setAlwaysOnTop(true);
 
-console.log("\thttps://github.com/RedSparr0w/csgo-hud");
+console.info('\n\n\n%chttps://github.com/RedSparr0w/csgo-hud%c\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', `
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  font-size: 20px;
+  padding: 20px 20px 210px 20px;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+  color: #131313;
+  letter-spacing: .15em;
+  background-image: url(http://csgo.redsparr0w.com/ak47.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`,null);
 
 server = http.createServer(function(req, res) {
 
