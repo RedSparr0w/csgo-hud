@@ -27,11 +27,11 @@
   "devDependencies": {
   },
   "license": "MIT",
-  "scripts" : { 
-    "test": "nwbuild -r ./",
-    "start": "nwbuild -r ./",
-    "preinstall": "npm list nw-builder -g || npm install nw-builder -g",
-    "build": "nwbuild ./ -o ../builds -p win64,win32 --winIco ./logo.ico",
+  "scripts" : {
+    "test": "nwbuild -r ./ || npm install nw-builder -g && nwbuild -r ./ || echo \u001b[31;1mEnsure you have installed Node.js then try again\u001b[0m && pause",
+    "start": "npm test",
+    "preinstall": "npm list nw-builder -g || npm install nw-builder -g || echo \u001b[31;1mEnsure you have installed Node.js then try again\u001b[0m && pause",
+    "build": "nwbuild ./ -o ../builds -p win64,win32 --winIco ./logo.ico || npm install nw-builder -g && nwbuild ./ -o ../builds -p win64,win32 --winIco ./logo.ico || echo \u001b[31;1mEnsure you have installed Node.js then try again\u001b[0m && pause",
     "postbuild": "postbuild.bat"
   },
   "main": "index.html",
