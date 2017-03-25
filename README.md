@@ -1,4 +1,6 @@
 # CS:GO HUD
+Example
+![example](https://i.imgur.com/azUTlHF.png)
 
 ## Before Running
 - Windows task bar must be set to 'Auto-hide' otherwise the HUD may get cut off
