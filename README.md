@@ -33,4 +33,4 @@ Example
 - http://steamcommunity.com/id/redsparr0w
 
 ## Credits
-- Thanks to https://github.com/Double0negative/CSGO-HUD/commit/a9d5072cf8247c1c7e9e56eb941e2bf003092e8f for the idea and base code.
+- Thanks to https://github.com/Double0negative/CSGO-HUD for the idea and base code.
